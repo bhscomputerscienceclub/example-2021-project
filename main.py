@@ -24,15 +24,12 @@ def numbertoletterandgpa(numbergrade):
   else:
     return ("F", 0.0)
 
-def semestergrade(grade1, grade2, exam, classtype):
+def semestergradepercent(grade1, grade2, exam, classtype):
   if classtype == "noexam":
     semesternumbergrade = 0.5*grade1 + 0.5*grade2
   elif classtype == "ap":
     semesternumbergrade = 0.375*grade1 + 0.375*grade2 + 0.25*exam
   else:
     semesternumbergrade = 0.4*grade1 + 0.4*grade2 + 0.2*exam
-  
-  print("Percent: " + str(semesternumbergrade))
-  letterandgpa = numbertoletterandgpa(semesternumbergrade)
-  print("Grade: " + str(letterandgpa[0]))
-  print("GPA: " + str(letterandgpa[1]))
+  return semesternumbergrade
+
