@@ -35,9 +35,7 @@ def semestergrade(grade1, grade2, exam, classtype):
   else:
     semesternumbergrade = 0.4*grade1 + 0.4*grade2 + 0.2*exam
   
-  print("Percent:" + str(semesternumbergrade))
+  print("Percent: " + str(semesternumbergrade))
   letterandgpa = numbertoletterandgpa(semesternumbergrade)
-  print("Grade:" + str(letterandgpa[0]))
-  print("GPA:" + str(letterandgpa[1]))
-
-semestergrade(90,80,90,"ap")
+  print("Grade: " + str(letterandgpa[0]))
+  print("GPA: " + str(letterandgpa[1]))
