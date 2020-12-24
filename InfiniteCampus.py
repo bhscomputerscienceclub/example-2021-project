@@ -24,3 +24,4 @@ def IC_grades():
     r  = s.get('https://lgca.infinitecampus.org/campus/resources/portal/grades')
     ic_grades = r.json()
     return ic_grades[0]['terms']
+# print(IC_grades()[1]['courses'][0]['gradingTasks'][0]['progressPointsEarned'])
