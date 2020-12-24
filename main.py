@@ -36,5 +36,3 @@ def semestergrade(grade1, grade2, exam, classtype):
   letterandgpa = numbertoletterandgpa(semesternumbergrade)
   print("Grade:" + str(letterandgpa[0]))
   print("GPA:" + str(letterandgpa[1]))
-
-semestergrade(90,80,90,"ap")
