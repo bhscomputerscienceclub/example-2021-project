@@ -1,3 +1,6 @@
+from InfiniteCampus import IC_grades
+
+grades = IC_grades()
 def numbertoletterandgpa(numbergrade):
   if numbergrade >= 93.5:
     return ("A", 4.0)
