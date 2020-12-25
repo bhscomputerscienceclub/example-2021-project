@@ -5,16 +5,9 @@ from main import grades
 
 class Data:
     def __init__(self, coursenum):
-        # course = self
-        # self.q1_percent = q1_percent
-        # self.q1_a_pts = q1_a_pts
-        # self.q1_t_pts = q1_t_pts
-        # self.q2_percent = q2_percent
-        # self.q2_a_pts = q2_a_pts
-        # self.q2_t_pts = q2_t_pts
         self.classtype = "no_exam"  # fix this
         self.semester_grade_wanted = 98  # fix this
-        self.q1_grade_wanted = 98  # fix this
+        self.q1_grade_wanted = 10  # doesnt matter
         self.q2_grade_wanted = 99  # fix this
 
         self.course_name = grades[0]["courses"][coursenum]["gradingTasks"][0][
@@ -67,7 +60,7 @@ class Data:
             / (self.q2_t_pts + assignment_total_pts)
         ) * 100 < self.q2_grade_wanted:
             assignment_achieved_pts += 0.5
-        return assignment_achieved_pts
+        return assignment_achieved_pts/assignment_total_pts*100
 
 
 # course_name = grades[0]["courses"][0]["gradingTasks"][0]["courseName"]
@@ -77,9 +70,14 @@ class Data:
 # q2_a_pts = grades[1]["courses"][0]["gradingTasks"][0]["progressPointsEarned"]
 # q1_t_pts = grades[0]["courses"][0]["gradingTasks"][0]["progressTotalPoints"]
 # q2_t_pts = grades[1]["courses"][0]["gradingTasks"][0]["progressTotalPoints"]
+li = list()
+for i in range(0, len(grades[0]["courses"])):
+    if "PHYSICS" not in grades[0]["courses"][i]["gradingTasks"][0]["courseName"]:
+        li.append(Data(i))
 
-a = Data(1)
-print(a.course_name)
-print(a.bonus_needed())
-print(a.exam_percent_needed())
-print(a.assignment_percent_needed(1))
+for i in range(len(li)):
+    print("Course Name = ", li[i].course_name)
+    print("Bonus Needed = ", li[i].bonus_needed())
+    print("Exam Percent Needed = ", li[i].exam_percent_needed())
+    print("Assignment Percent Needed = ", li[i].assignment_percent_needed(50))
+    print()

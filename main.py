@@ -54,5 +54,3 @@ for i in range(len(grades[0]["courses"])):
         )
     except KeyError:
         pass
-
-print(semestergrades)
