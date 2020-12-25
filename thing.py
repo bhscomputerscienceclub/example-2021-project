@@ -46,21 +46,10 @@ class Data:
         return examgrade
 
     def bonus_needed(self):
-        bonuspoints = 0
-        while (
-            (self.q2_a_pts + bonuspoints) / self.q2_t_pts
-        ) * 100 < self.q2_grade_wanted:
-            bonuspoints += 0.5
-        return bonuspoints
+        return (self.q2_grade_wanted/100*self.q2_t_pts)-self.q2_a_pts
 
     def assignment_percent_needed(self, assignment_total_pts):
-        assignment_achieved_pts = 0
-        while (
-            (self.q2_a_pts + assignment_achieved_pts)
-            / (self.q2_t_pts + assignment_total_pts)
-        ) * 100 < self.q2_grade_wanted:
-            assignment_achieved_pts += 0.5
-        return assignment_achieved_pts/assignment_total_pts*100
+        return (self.q2_a_pts - (self.q2_grade_wanted*self.q2_t_pts))/(self.q2grade_wanted - 1)
 
 
 # course_name = grades[0]["courses"][0]["gradingTasks"][0]["courseName"]
