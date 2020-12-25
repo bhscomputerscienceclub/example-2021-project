@@ -4,7 +4,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import time
 import requests
-
+import sys
 
 def IC_grades():
     username = ""
@@ -24,7 +24,11 @@ def IC_grades():
 
     r = s.get("https://lgca.infinitecampus.org/campus/resources/portal/grades")
     ic_grades = r.json()
-    return ic_grades[0]["terms"]
+    try:
+        return ic_grades[0]["terms"]
+    except KeyError:
+        print('Wrong Username or Password')
+        sys.exit()
 
 
 # print(IC_grades()[1]['courses'][0]['gradingTasks'][0]['progressPointsEarned'])
