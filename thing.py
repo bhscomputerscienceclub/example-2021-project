@@ -1,13 +1,11 @@
-from main import numbertoletterandgpa
-from main import semestergradepercent
-from main import grades
-
+from InfiniteCampus import IC_grades
+grades = IC_grades()
 
 class Data:
     def __init__(self, coursenum):
         self.classtype = "no_exam"  # fix this
         self.semester_grade_wanted = 98  # fix this
-        self.q1_grade_wanted = 10  # doesnt matter
+        self.q1_grade_wanted = 10  # doesnt matter for now
         self.q2_grade_wanted = 99  # fix this
 
         self.course_name = grades[0]["courses"][coursenum]["gradingTasks"][0][

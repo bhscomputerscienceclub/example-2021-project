@@ -7,8 +7,8 @@ import requests
 
 
 def IC_grades():
-    username = "kzheng"
-    password = "Bw190134"
+    username = ""
+    password = ""
 
     driver = Chrome()
     driver.get("https://lgca.infinitecampus.org/campus/portal/students/beachwood.jsp")
