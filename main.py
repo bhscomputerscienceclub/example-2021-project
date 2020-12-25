@@ -39,18 +39,3 @@ def semestergradepercent(grade1, grade2, exam, classtype):
         semesternumbergrade = 0.4 * grade1 + 0.4 * grade2 + 0.2 * exam
     return semesternumbergrade
 
-
-semestergrades = {}
-
-for i in range(len(grades[0]["courses"])):
-    try:
-        semestergrades[
-            grades[0]["courses"][i]["gradingTasks"][0]["courseName"]
-        ] = semestergradepercent(
-            grades[0]["courses"][i]["gradingTasks"][0]["progressPercent"],
-            grades[1]["courses"][i]["gradingTasks"][0]["progressPercent"],
-            "",
-            "no_exam",
-        )
-    except KeyError:
-        pass

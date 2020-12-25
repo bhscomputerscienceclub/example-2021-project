@@ -35,25 +35,34 @@ class Data:
     def exam_percent_needed(self):
         if self.classtype == "no_exam":
             return "N/A"
-        examgrade = 0
-        while (
-            semestergradepercent(
-                self.q1_percent, self.q2_percent, examgrade, self.classtype
+        elif self.classtype == "ap":
+            return (
+                4 * self.semester_grade_wanted
+                - 1.5 * self.q1_percent
+                - 1.5 * self.q2_percent
             )
-            < self.semester_grade_wanted
-        ):
-            examgrade += 0.1
-        return examgrade
+        else:
+            return (
+                5 * self.semester_grade_wanted
+                - 2 * self.q1_percent
+                - 2 * self.q2_percent
+            )
 
     def bonus_needed(self):
-        if (self.q2_grade_wanted/100*self.q2_t_pts)-self.q2_a_pts > 0:
-            return (self.q2_grade_wanted/100*self.q2_t_pts)-self.q2_a_pts
+        if (self.q2_grade_wanted / 100 * self.q2_t_pts) - self.q2_a_pts > 0:
+            return (self.q2_grade_wanted / 100 * self.q2_t_pts) - self.q2_a_pts
         else:
             return 0
 
     def assignment_percent_needed(self, assignment_total_pts):
-        return (self.q2_grade_wanted / 100 * (self.q2_t_pts + assignment_total_pts) - self.q2_a_pts) / assignment_total_pts * 100
-
+        return (
+            (
+                self.q2_grade_wanted / 100 * (self.q2_t_pts + assignment_total_pts)
+                - self.q2_a_pts
+            )
+            / assignment_total_pts
+            * 100
+        )
 
 li = list()
 for i in range(0, len(grades[0]["courses"])):
