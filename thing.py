@@ -49,7 +49,7 @@ class Data:
         return (self.q2_grade_wanted/100*self.q2_t_pts)-self.q2_a_pts
 
     def assignment_percent_needed(self, assignment_total_pts):
-        return (self.q2_a_pts - (self.q2_grade_wanted*self.q2_t_pts))/(self.q2_grade_wanted - 1)
+        return (self.q2_grade_wanted(self.q2_t_pts + assignment_total_pts) - self.q2_a_pts) / assignment_total_pts
 
 
 # course_name = grades[0]["courses"][0]["gradingTasks"][0]["courseName"]
