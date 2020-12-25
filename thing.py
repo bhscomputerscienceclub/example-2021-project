@@ -46,9 +46,8 @@ class Data:
         return examgrade
 
     def bonus_needed(self):
-        bonus = (self.q2_grade_wanted/100*self.q2_t_pts)-self.q2_a_pts
-        if bonus > 0:
-            return bonus
+        if (self.q2_grade_wanted/100*self.q2_t_pts)-self.q2_a_pts > 0:
+            return (self.q2_grade_wanted/100*self.q2_t_pts)-self.q2_a_pts
         else:
             return 0
 
@@ -56,13 +55,6 @@ class Data:
         return (self.q2_grade_wanted / 100 * (self.q2_t_pts + assignment_total_pts) - self.q2_a_pts) / assignment_total_pts * 100
 
 
-# course_name = grades[0]["courses"][0]["gradingTasks"][0]["courseName"]
-# q1_percent = grades[0]["courses"][0]["gradingTasks"][0]["progressPercent"]
-# q2_percent = grades[1]["courses"][0]["gradingTasks"][0]["progressPercent"]
-# q1_a_pts = grades[0]["courses"][0]["gradingTasks"][0]["progressPointsEarned"]
-# q2_a_pts = grades[1]["courses"][0]["gradingTasks"][0]["progressPointsEarned"]
-# q1_t_pts = grades[0]["courses"][0]["gradingTasks"][0]["progressTotalPoints"]
-# q2_t_pts = grades[1]["courses"][0]["gradingTasks"][0]["progressTotalPoints"]
 li = list()
 for i in range(0, len(grades[0]["courses"])):
     if "PHYSICS" not in grades[0]["courses"][i]["gradingTasks"][0]["courseName"]:
