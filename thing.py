@@ -3,10 +3,17 @@ grades = IC_grades()
 
 class Data:
     def __init__(self, coursenum):
-        self.classtype = "no_exam"  # fix this
-        self.semester_grade_wanted = 98  # fix this
-        self.q1_grade_wanted = 10  # doesnt matter for now
-        self.q2_grade_wanted = 99  # fix this
+
+        # uncomment this when normal school schedule
+        # if 'AP' in grades[0]["courses"][coursenum]["gradingTasks"][0]["courseName"]:
+        #     self.classtype = "ap"
+        # else:
+        #     self.classtype = "regular"
+
+        self.classtype = "no_exam"
+        self.semester_grade_wanted = 98  # will be user input
+        self.q1_grade_wanted = 10  # will be user input
+        self.q2_grade_wanted = 99  # will be user input
 
         self.course_name = grades[0]["courses"][coursenum]["gradingTasks"][0][
             "courseName"
