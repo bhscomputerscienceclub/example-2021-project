@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <title>Page Title</title>
+    <style>
+        #button1 {
+            width: 300px;
+            height: 40px;
+
+        }
+
+        #button2 {
+            width: 300px;
+            height: 40px;
+        }
+
+        #container {
+            text-align: center;
+        }
+    </style>
+
+</head>
+
+<body style="background-color:powderblue;">
+
+    <h1 style="font-family:verdana; font-size: 300%;">
+        <center> Grade Calculator</center>
+
+    </h1>
+    <form action="." method="post" class="hform">
+        <label>IC Username:</label><br>
+        <input type="text" name="username" value=""><br>
+        <label>IC Password:</label><br>
+        <input type="password" name="password" value=""><br>
+        <label>Semester Grade Wanted:</label><br>
+        <input type="text" name="semester_grade_wanted" value=""><br>
+        <label>Quarter 1 Grade Wanted:</label><br>
+        <input type="text" name="q1_grade_wanted" value=""><br>
+        <label>Quarter 2 Grade Wanted:</label><br>
+        <input type="text" name="q2_grade_wanted" value=""><br>
+        <label>Class Type:</label><br>
+        <input type="text" name="class_type" value=""><br>
+        <label>Assignment Points:</label><br>
+        <input type="text" name="assignment_pts" value=""><br>
+
+        <p><input type="submit" name="submit" value="Calculate" class="button"></p>
+    </form>
+    <p style="font-family:verdana;">
+        <center>Use this page to calculate your GPA or to calculate your SBGBook grades.</center>
+    </p>
+    <p>
+        Course: {{a}}<br>
+        Bonus Needed: {{b}}<br>
+        Exam Percent Needed: {{c}}<br>
+        Assignment Percent Needed: {{d}}<br>{{e}}
+    </p>
+    <br>
+    <br>
+    <div id="container">
+        <button type="button home-button" id="button1">GPA</button>
+        <button type="button contact-button" id="button2">SBGBook</button>
+    </div>
+
+
+</body>
+
+</html>

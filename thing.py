@@ -1,8 +1,10 @@
 from InfiniteCampus import IC_grades
-grades = IC_grades()
+
+
+
 
 class Data:
-    def __init__(self, coursenum):
+    def __init__(self, course_num, grades, semester_grade_wanted, q1_grade_wanted, q2_grade_wanted, class_type):
 
         # uncomment this when normal school schedule
         # if 'AP' in grades[0]["courses"][coursenum]["gradingTasks"][0]["courseName"]:
@@ -10,37 +12,45 @@ class Data:
         # else:
         #     self.classtype = "regular"
 
-        self.classtype = "no_exam"
-        self.semester_grade_wanted = 98  # will be user input
-        self.q1_grade_wanted = 10  # will be user input
-        self.q2_grade_wanted = 99  # will be user input
+        # self.class_type = "no_exam"
+        # self.semester_grade_wanted = 98  # will be user input
+        # self.q1_grade_wanted = 10  # will be user input
+        # self.q2_grade_wanted = 99  # will be user input
 
-        self.course_name = grades[0]["courses"][coursenum]["gradingTasks"][0][
+
+        
+        self.semester_grade_wanted = semester_grade_wanted
+        self.q1_grade_wanted = q1_grade_wanted
+        self.q2_grade_wanted = q2_grade_wanted
+        self.class_type = class_type
+
+
+        self.course_name = grades[0]["courses"][course_num]["gradingTasks"][0][
             "courseName"
         ]
-        self.q1_percent = grades[0]["courses"][coursenum]["gradingTasks"][0][
+        self.q1_percent = grades[0]["courses"][course_num]["gradingTasks"][0][
             "progressPercent"
         ]
-        self.q2_percent = grades[1]["courses"][coursenum]["gradingTasks"][0][
+        self.q2_percent = grades[1]["courses"][course_num]["gradingTasks"][0][
             "progressPercent"
         ]
-        self.q1_a_pts = grades[0]["courses"][coursenum]["gradingTasks"][0][
+        self.q1_a_pts = grades[0]["courses"][course_num]["gradingTasks"][0][
             "progressPointsEarned"
         ]
-        self.q2_a_pts = grades[1]["courses"][coursenum]["gradingTasks"][0][
+        self.q2_a_pts = grades[1]["courses"][course_num]["gradingTasks"][0][
             "progressPointsEarned"
         ]
-        self.q1_t_pts = grades[0]["courses"][coursenum]["gradingTasks"][0][
+        self.q1_t_pts = grades[0]["courses"][course_num]["gradingTasks"][0][
             "progressTotalPoints"
         ]
-        self.q2_t_pts = grades[1]["courses"][coursenum]["gradingTasks"][0][
+        self.q2_t_pts = grades[1]["courses"][course_num]["gradingTasks"][0][
             "progressTotalPoints"
         ]
 
     def exam_percent_needed(self):
-        if self.classtype == "no_exam":
+        if self.class_type == "no_exam":
             return "N/A"
-        elif self.classtype == "ap":
+        elif self.class_type == "ap":
             return (
                 4 * self.semester_grade_wanted
                 - 1.5 * self.q1_percent
@@ -68,15 +78,3 @@ class Data:
             / assignment_total_pts
             * 100
         )
-
-li = list()
-for i in range(0, len(grades[0]["courses"])):
-    if "PHYSICS" not in grades[0]["courses"][i]["gradingTasks"][0]["courseName"]:
-        li.append(Data(i))
-
-for i in range(len(li)):
-    print("Course Name = ", li[i].course_name)
-    print("Bonus Needed = ", li[i].bonus_needed())
-    print("Exam Percent Needed = ", li[i].exam_percent_needed())
-    print("Assignment Percent Needed = ", li[i].assignment_percent_needed(50))
-    print()
