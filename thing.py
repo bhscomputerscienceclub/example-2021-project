@@ -1,10 +1,16 @@
 from InfiniteCampus import IC_grades
 
 
-
-
 class Data:
-    def __init__(self, course_num, grades, semester_grade_wanted, q1_grade_wanted, q2_grade_wanted, class_type):
+    def __init__(
+        self,
+        course_num,
+        grades,
+        semester_grade_wanted,
+        q1_grade_wanted,
+        q2_grade_wanted,
+        class_type,
+    ):
 
         # uncomment this when normal school schedule
         # if 'AP' in grades[0]["courses"][coursenum]["gradingTasks"][0]["courseName"]:
@@ -17,13 +23,10 @@ class Data:
         # self.q1_grade_wanted = 10  # will be user input
         # self.q2_grade_wanted = 99  # will be user input
 
-
-        
         self.semester_grade_wanted = semester_grade_wanted
         self.q1_grade_wanted = q1_grade_wanted
         self.q2_grade_wanted = q2_grade_wanted
         self.class_type = class_type
-
 
         self.course_name = grades[0]["courses"][course_num]["gradingTasks"][0][
             "courseName"

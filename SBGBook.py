@@ -6,17 +6,17 @@ import time
 import requests
 import re
 
-#pls dont use this
+# pls dont use this
 
 driver = Chrome()
 driver.get("https://www.sbgbook.xyz/gbook/login/")
-username = '' 
-password = '' 
+username = ""
+password = ""
 driver.find_element_by_class_name("btn-success").click()
 time.sleep(1)
-driver.find_element_by_id('id_LogIn-username').send_keys(username)
-driver.find_element_by_id('id_LogIn-password').send_keys(password)
-driver.find_element_by_id('lgnbtn').click()
+driver.find_element_by_id("id_LogIn-username").send_keys(username)
+driver.find_element_by_id("id_LogIn-password").send_keys(password)
+driver.find_element_by_id("lgnbtn").click()
 url = driver.current_url
 
 # courser = driver.find_element_by_class_name('dropdown-menu')
@@ -29,18 +29,24 @@ url = driver.current_url
 # print(grading_period.get_attribute('innerHTML'))
 
 
-
-cookies=driver.get_cookies()
+cookies = driver.get_cookies()
 driver.quit()
 
 s = requests.Session()
 for c in cookies:
-    s.cookies[c['name']]= c['value']
+    s.cookies[c["name"]] = c["value"]
 
-title_search = re.search('student(.*)-(.*)-(.*)\/([0-9]*)', url, re.IGNORECASE)
-student_id,useless,collection_id,section_id = title_search.groups()
+title_search = re.search("student(.*)-(.*)-(.*)/([0-9]*)", url, re.IGNORECASE)
+student_id, useless, collection_id, section_id = title_search.groups()
 
 
-r  = s.post('https://www.sbgbook.xyz/gbook/studentgradeframe/?section_id=' + section_id +'&student_id='+ student_id + '&scollection_id=' + collection_id)
+r = s.post(
+    "https://www.sbgbook.xyz/gbook/studentgradeframe/?section_id="
+    + section_id
+    + "&student_id="
+    + student_id
+    + "&scollection_id="
+    + collection_id
+)
 sbg_grades = r.content.decode()
 print(sbg_grades)

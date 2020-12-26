@@ -6,7 +6,8 @@ import time
 import requests
 import sys
 
-def IC_grades(username,password):
+
+def IC_grades(username, password):
 
     driver = Chrome()
     driver.get("https://lgca.infinitecampus.org/campus/portal/students/beachwood.jsp")
@@ -25,7 +26,7 @@ def IC_grades(username,password):
     try:
         return ic_grades[0]["terms"]
     except KeyError:
-        print('Wrong Username or Password')
+        print("Wrong Username or Password")
         sys.exit()
 
 
