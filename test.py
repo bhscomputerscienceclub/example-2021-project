@@ -12,6 +12,7 @@ def function():
     c = ''
     d = ''
     e = ''
+    
     if request.method == "POST":
         username = request.form.get('username')
         password = request.form.get('password')
