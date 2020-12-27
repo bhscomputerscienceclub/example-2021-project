@@ -60,14 +60,14 @@ class Data:
                 - 2 * self.q1_percent
                 - 2 * self.q2_percent
             )
-
-    def bonus_needed(self):
+            
+    def q2_bonus_needed(self):
         if (self.q2_grade_wanted / 100 * self.q2_t_pts) - self.q2_a_pts > 0:
             return (self.q2_grade_wanted / 100 * self.q2_t_pts) - self.q2_a_pts
         else:
             return 0
 
-    def assignment_percent_needed(self, assignment_total_pts):
+    def q2_assignment_percent_needed(self, assignment_total_pts):
         return (
             (
                 self.q2_grade_wanted / 100 * (self.q2_t_pts + assignment_total_pts)

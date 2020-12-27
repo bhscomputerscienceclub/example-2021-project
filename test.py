@@ -25,7 +25,7 @@ def function():
             Invalid_User = True
         else:
             
-            li = list()
+            li = []
             for i in range(0, len(grades[0]["courses"])):
                 if (
                     "PHYSICS"
@@ -44,8 +44,8 @@ def function():
                 ret.append([])
                 ret[i].append(li[i].course_name)
                 ret[i].append(li[i].exam_percent_needed())
-                ret[i].append(li[i].bonus_needed())
-                ret[i].append(li[i].assignment_percent_needed(assignment_pts))
+                ret[i].append(li[i].q2_bonus_needed())
+                ret[i].append(li[i].q2_assignment_percent_needed(assignment_pts))
     return render_template("index.html", Invalid_User = Invalid_User, Invalid_Number = Invalid_Number, len=len(ret), ret=ret)
 
 

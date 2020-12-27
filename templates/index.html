@@ -50,19 +50,20 @@
     <p>
 
         {% if Invalid_Number %}
-            Invalid Number.  Try Again
+        Invalid Number. Try Again
 
         {% elif Invalid_User %}
-            Invalid Username/Password
+        Invalid Username/Password  Try Again
+
         {% else %}
-            {%for i in range(0, len)%}
+        {%for i in range(0, len)%}
 
-            Course Name: {{ret[i][0]}}<br>
-            Semester Exam Percent Needed: {{ret[i][1]}}<br>
-            Quarter Bonus Points Needed: {{ret[i][2]}}<br>
-            Quarter Assignment Percent Needed: {{ret[i][3]}}<br><br>
+        Course Name: {{ret[i][0]}}<br>
+        Semester Exam Percent Needed: {{ret[i][1]}}<br>
+        Quarter Bonus Points Needed: {{ret[i][2]}}<br>
+        Quarter Assignment Percent Needed: {{ret[i][3]}}<br><br>
 
-            {%endfor%}
+        {%endfor%}
         {% endif %}
     </p>
     <br>
