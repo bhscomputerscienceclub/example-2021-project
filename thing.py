@@ -9,7 +9,6 @@ class Data:
         semester_grade_wanted,
         q1_grade_wanted,
         q2_grade_wanted,
-        class_type,
     ):
 
         # uncomment this when normal school schedule
@@ -18,15 +17,11 @@ class Data:
         # else:
         #     self.classtype = "regular"
 
-        # self.class_type = "no_exam"
-        # self.semester_grade_wanted = 98  # will be user input
-        # self.q1_grade_wanted = 10  # will be user input
-        # self.q2_grade_wanted = 99  # will be user input
+        self.class_type = "no_exam"
 
         self.semester_grade_wanted = semester_grade_wanted
         self.q1_grade_wanted = q1_grade_wanted
         self.q2_grade_wanted = q2_grade_wanted
-        self.class_type = class_type
 
         self.course_name = grades[0]["courses"][course_num]["gradingTasks"][0][
             "courseName"
