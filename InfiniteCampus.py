@@ -23,11 +23,7 @@ def IC_grades(username, password):
 
     r = s.get("https://lgca.infinitecampus.org/campus/resources/portal/grades")
     ic_grades = r.json()
-    try:
-        return ic_grades[0]["terms"]
-    except KeyError:
-        print("Wrong Username or Password")
-        sys.exit()
+    return ic_grades[0]["terms"]
 
 
 # print(IC_grades()[1]['courses'][0]['gradingTasks'][0]['progressPointsEarned'])

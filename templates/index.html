@@ -48,14 +48,22 @@
         <center>Use this page to calculate your GPA or to calculate your SBGBook grades.</center>
     </p>
     <p>
-        {%for i in range(0, len)%}
 
-        Course Name: {{ret[i][0]}}<br>
-        Semester Exam Percent Needed: {{ret[i][1]}}<br>
-        Quarter Bonus Points Needed: {{ret[i][2]}}<br>
-        Quarter Assignment Percent Needed: {{ret[i][3]}}<br><br>
+        {% if Invalid_Number %}
+            Invalid Number.  Try Again
 
-        {%endfor%}
+        {% elif Invalid_User %}
+            Invalid Username/Password
+        {% else %}
+            {%for i in range(0, len)%}
+
+            Course Name: {{ret[i][0]}}<br>
+            Semester Exam Percent Needed: {{ret[i][1]}}<br>
+            Quarter Bonus Points Needed: {{ret[i][2]}}<br>
+            Quarter Assignment Percent Needed: {{ret[i][3]}}<br><br>
+
+            {%endfor%}
+        {% endif %}
     </p>
     <br>
     <br>
