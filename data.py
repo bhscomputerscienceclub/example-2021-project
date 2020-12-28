@@ -11,13 +11,15 @@ class Data:
         q2_grade_wanted,
     ):
 
-        # uncomment this when normal school schedule
-        # if 'AP' in grades[0]["courses"][coursenum]["gradingTasks"][0]["courseName"]:
-        #     self.classtype = "ap"
-        # else:
-        #     self.classtype = "regular"
+        
+        if 'AP' in grades[0]["courses"][course_num]["gradingTasks"][0]["courseName"]:
+            self.gpatype = "ap"
+        elif 'HONORS' in grades[0]["courses"][course_num]["gradingTasks"][0]["courseName"]:
+            self.gpatype = "honors"
+        else:
+            self.gpatype = "regular"
 
-        self.class_type = "no_exam"
+        self.class_type = "no_exam" #for this school year
 
         self.semester_grade_wanted = semester_grade_wanted
         self.q1_grade_wanted = q1_grade_wanted
