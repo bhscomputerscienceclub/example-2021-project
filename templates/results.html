@@ -20,13 +20,25 @@
     </h2>
     
     <center>
-    <p style="font-family:helvetica;">IC Username:</p><br>
-    <p style="font-family:helvetica;">IC Password:</p><br>
-    <p style="font-family:helvetica;">Semester Grade Wanted:</p><br>
-    <p style="font-family:helvetica;">Quarter 1 Grade Wanted:</p><br>
-    <p style="font-family:helvetica;">Quarter 2 Grade Wanted:</p><br>
-    <p style="font-family:helvetica;">Assignment Points:</p><br>
-    <p style="font-family:helvetica; font-size: 200%;">GPA:</p><br>
+        <p>
+
+            {% if Invalid_Number %}
+            Invalid Number. Try Again
+    
+            {% elif Invalid_User %}
+            Invalid Username/Password Try Again
+    
+            {% else %}
+            {%for i in range(0, len)%}
+    
+            Course Name: {{ret[i][0]}}<br>
+            Semester Exam Percent Needed: {{ret[i][1]}}<br>
+            Quarter Bonus Points Needed: {{ret[i][2]}}<br>
+            Quarter Assignment Percent Needed: {{ret[i][3]}}<br><br>
+    
+            {%endfor%}
+            {% endif %}
+        </p>
     </center>
 
 

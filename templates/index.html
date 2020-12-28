@@ -3,7 +3,7 @@
 
 <head>
     <title>Page Title</title>
-    <link rel="stylesheet" href="formforindex.css">
+    <link rel="stylesheet" href="{{ url_for('static',filename='styles/formforindex.css') }}">
     <!-- <style>
         #button1 {
             width: 300px;
@@ -19,7 +19,7 @@
         #container {
             text-align: center;
         }
-    </style>--> 
+    </style>-->
 
 </head>
 
@@ -31,42 +31,31 @@
     </h1>
     <h2 style="font-family:helvetica;; font-size: 200%;">
         <center>Use this page to calculate your GPA or to calculate your SBGBook grades.</center>
-    
+
     </h2>
-    
-    <form action="." method="post" class="hform" >
+
+    <form action="." method="post" class="hform">
         <center>
-        <br>
-        <input type="text" name="username" value="" placeholder="IC Username"><br><br>
-        <input type="password" name="password" value="" placeholder="IC Password"><br><br>
-        <input type="text" name="q1_grade_wanted" value="" placeholder="Semester Grade Wanted"><br><br>
-        <input type="text" name="q2_grade_wanted" value="" placeholder="Quarter 1 Grade Wanted"><br><br>
-        <input type="text" name="assignment_pts" value="" placeholder="Quarter 2 Grade Wanted"><br><br>
-        <input type="text" name="semester_grade_wanted" value="" placeholder="Assignment Points"><br><br>
-        <p><input type="submit" name="submit" value="Calculate" class="button" style="font-size: 200%;"></p></center>
+            <br>
+            <input type="text" name="username" value="" placeholder="IC Username"><br><br>
+            <input type="password" name="password" value="" placeholder="IC Password"><br><br>
+            <input type="text" name="q1_grade_wanted" value="" placeholder="Semester Grade Wanted"><br><br>
+            <input type="text" name="q2_grade_wanted" value="" placeholder="Quarter 1 Grade Wanted"><br><br>
+            <input type="text" name="assignment_pts" value="" placeholder="Quarter 2 Grade Wanted"><br><br>
+            <input type="text" name="semester_grade_wanted" value="" placeholder="Assignment Points"><br><br>
+            <p><input type="submit" name="submit" value="Calculate" class="button" style="font-size: 200%;"></p>
+        </center>
     </form>
+
+    {% if Invalid_Number %}
+    Invalid Number. Try Again
+
+    {% elif Invalid_User %}
+    Invalid Username/Password Try Again
+    {% endif %}
+    <br>
+    <br>
     
-    <p>
-
-        {% if Invalid_Number %}
-        Invalid Number. Try Again
-
-        {% elif Invalid_User %}
-        Invalid Username/Password  Try Again
-
-        {% else %}
-        {%for i in range(0, len)%}
-
-        Course Name: {{ret[i][0]}}<br>
-        Semester Exam Percent Needed: {{ret[i][1]}}<br>
-        Quarter Bonus Points Needed: {{ret[i][2]}}<br>
-        Quarter Assignment Percent Needed: {{ret[i][3]}}<br><br>
-
-        {%endfor%}
-        {% endif %}
-    </p>
-    <br>
-    <br>
     <!--<div id="container">
         <button type="button home-button" id="button1">GPA</button>
         <button type="button contact-button" id="button2">SBGBook</button>
