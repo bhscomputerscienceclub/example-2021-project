@@ -46,6 +46,12 @@ class Data:
         self.q2_t_pts = grades[1]["courses"][course_num]["gradingTasks"][0][
             "progressTotalPoints"
         ]
+        self.q1_letter_grade = grades[0]["courses"][course_num]["gradingTasks"][0][
+            "score"
+        ]
+        self.q2_letter_grade = grades[1]["courses"][course_num]["gradingTasks"][0][
+            "score"
+        ]
 
     def exam_percent_needed(self):
         if self.class_type == "no_exam":
