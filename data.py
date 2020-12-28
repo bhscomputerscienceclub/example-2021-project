@@ -162,3 +162,12 @@ class Data:
                 return 0.7
             else:
                 return 0.0
+
+def weightedGPA(Data):
+    total = 0
+    classcount = 0
+    for self in Data:
+        total += letter_to_gpa(self)
+        classcount += 1
+    return total/classcount
+
