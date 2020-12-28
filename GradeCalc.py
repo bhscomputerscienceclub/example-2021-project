@@ -53,12 +53,12 @@ def function():
                 ret[i].append(li[i].q2_assignment_percent_needed(assignment_pts))
                 ret[i].append(li[i].letter_to_gpa())
 
-            User_ID = random.randint(1, 10000000000000000000000)
+            User_ID = str(random.randint(1, 10000000000000000000000))
             while userdata.get(User_ID, False):
-                User_ID = random.randint(1, 10000000000000000000000)
+                User_ID = str(random.randint(1, 10000000000000000000000))
             userdata[User_ID] = ret
-            resp = make_response(redirect('/results'))
-            resp.set_cookie('UserID', str(User_ID))
+            resp = make_response(redirect("/results"))
+            resp.set_cookie("UserID", User_ID)
             return resp
     return render_template(
         "index.html", Invalid_User=Invalid_User, Invalid_Number=Invalid_Number
@@ -68,7 +68,7 @@ def function():
 @app.route("/results", methods=["GET", "POST"])
 def functionn():
     try:
-        User_ID = int(request.cookies.get('UserID'))
+        User_ID = request.cookies.get("UserID")
         ret = userdata[User_ID]
     except:
         return redirect(url_for("function", Invalid_User=False, Invalid_Number=False))
