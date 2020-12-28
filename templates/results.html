@@ -3,7 +3,7 @@
 
 <head>
     <title>Page Title</title>
-    <link rel="stylesheet" href="formforindex.css">
+    <link rel="stylesheet" href="{{ url_for('static',filename='styles/formforindex.css') }}">
 
 
 </head>
@@ -34,7 +34,8 @@
             Course Name: {{ret[i][0]}}<br>
             Semester Exam Percent Needed: {{ret[i][1]}}<br>
             Quarter Bonus Points Needed: {{ret[i][2]}}<br>
-            Quarter Assignment Percent Needed: {{ret[i][3]}}<br><br>
+            Quarter Assignment Percent Needed: {{ret[i][3]}}<br>
+            Course GPA: {{ret[i][4]}}<br><br>
 
             {%endfor%}
             {% endif %}

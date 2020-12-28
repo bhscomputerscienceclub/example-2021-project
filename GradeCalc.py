@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, make_response
 from InfiniteCampus import IC_grades
 from data import Data
 import random
@@ -51,12 +51,15 @@ def function():
                 ret[i].append(li[i].exam_percent_needed())
                 ret[i].append(li[i].q2_bonus_needed())
                 ret[i].append(li[i].q2_assignment_percent_needed(assignment_pts))
+                ret[i].append(li[i].letter_to_gpa())
 
-            num = random.randint(1, 10000000000000000000000)
-            while userdata.get(num, False):
-                num = random.randint(1, 10000000000000000000000)
-            userdata[num] = ret
-            return redirect(url_for("functionn", ret=num))
+            User_ID = random.randint(1, 10000000000000000000000)
+            while userdata.get(User_ID, False):
+                User_ID = random.randint(1, 10000000000000000000000)
+            userdata[User_ID] = ret
+            resp = make_response(redirect('/results'))
+            resp.set_cookie('UserID', str(User_ID))
+            return resp
     return render_template(
         "index.html", Invalid_User=Invalid_User, Invalid_Number=Invalid_Number
     )
@@ -65,8 +68,8 @@ def function():
 @app.route("/results", methods=["GET", "POST"])
 def functionn():
     try:
-        num = int(request.args["ret"])
-        ret = userdata[num]
+        User_ID = int(request.cookies.get('UserID'))
+        ret = userdata[User_ID]
     except:
         return redirect(url_for("function", Invalid_User=False, Invalid_Number=False))
 

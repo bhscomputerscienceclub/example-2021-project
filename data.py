@@ -11,15 +11,17 @@ class Data:
         q2_grade_wanted,
     ):
 
-        
-        if 'AP' in grades[0]["courses"][course_num]["gradingTasks"][0]["courseName"]:
-            self.gpatype = "ap"
-        elif 'HONORS' in grades[0]["courses"][course_num]["gradingTasks"][0]["courseName"]:
-            self.gpatype = "honors"
+        if "AP" in grades[0]["courses"][course_num]["gradingTasks"][0]["courseName"]:
+            self.gpa_type = "ap"
+        elif (
+            "HONORS"
+            in grades[0]["courses"][course_num]["gradingTasks"][0]["courseName"]
+        ):
+            self.gpa_type = "honors"
         else:
-            self.gpatype = "regular"
+            self.gpa_type = "regular"
 
-        self.class_type = "no_exam" #for this school year
+        self.class_type = "no_exam"  # for this semester cuz covid
 
         self.semester_grade_wanted = semester_grade_wanted
         self.q1_grade_wanted = q1_grade_wanted
@@ -46,11 +48,8 @@ class Data:
         self.q2_t_pts = grades[1]["courses"][course_num]["gradingTasks"][0][
             "progressTotalPoints"
         ]
-        self.q1_letter_grade = grades[0]["courses"][course_num]["gradingTasks"][0][
-            "score"
-        ]
-        self.q2_letter_grade = grades[1]["courses"][course_num]["gradingTasks"][0][
-            "score"
+        self.final_letter_grade = grades[1]["courses"][course_num]["gradingTasks"][2][
+            "progressScore"
         ]
 
     def exam_percent_needed(self):
@@ -68,7 +67,7 @@ class Data:
                 - 2 * self.q1_percent
                 - 2 * self.q2_percent
             )
-            
+
     def q2_bonus_needed(self):
         if (self.q2_grade_wanted / 100 * self.q2_t_pts) - self.q2_a_pts > 0:
             return (self.q2_grade_wanted / 100 * self.q2_t_pts) - self.q2_a_pts
@@ -84,3 +83,82 @@ class Data:
             / assignment_total_pts
             * 100
         )
+
+    def letter_to_gpa(self):
+        if self.gpa_type == "ap":
+            if self.final_letter_grade == "A":
+                return 5.0
+            elif self.final_letter_grade == "A-":
+                return 4.7
+            elif self.final_letter_grade == "B+":
+                return 4.3
+            elif self.final_letter_grade == "B":
+                return 4.0
+            elif self.final_letter_grade == "B-":
+                return 3.7
+            elif self.final_letter_grade == "C+":
+                return 3.3
+            elif self.final_letter_grade == "C":
+                return 3.0
+            elif self.final_letter_grade == "C-":
+                return 1.7
+            elif self.final_letter_grade == "D+":
+                return 1.3
+            elif self.final_letter_grade == "D":
+                return 1.0
+            elif self.final_letter_grade == "D-":
+                return 0.7
+            else:
+                return 0.0
+
+        if self.gpa_type == "honors":
+            if self.final_letter_grade == "A":
+                return 4.5
+            elif self.final_letter_grade == "A-":
+                return 4.2
+            elif self.final_letter_grade == "B+":
+                return 3.8
+            elif self.final_letter_grade == "B":
+                return 3.5
+            elif self.final_letter_grade == "B-":
+                return 3.2
+            elif self.final_letter_grade == "C+":
+                return 2.8
+            elif self.final_letter_grade == "C":
+                return 2.5
+            elif self.final_letter_grade == "C-":
+                return 1.7
+            elif self.final_letter_grade == "D+":
+                return 1.3
+            elif self.final_letter_grade == "D":
+                return 1.0
+            elif self.final_letter_grade == "D-":
+                return 0.7
+            else:
+                return 0.0
+
+        if self.gpa_type == "regular":
+            if self.final_letter_grade == "A":
+                return 4.0
+            elif self.final_letter_grade == "A-":
+                return 3.7
+            elif self.final_letter_grade == "B+":
+                return 3.3
+            elif self.final_letter_grade == "B":
+                return 3.0
+            elif self.final_letter_grade == "B-":
+                return 2.7
+            elif self.final_letter_grade == "C+":
+                return 2.3
+            elif self.final_letter_grade == "C":
+                return 2.0
+            elif self.final_letter_grade == "C-":
+                return 1.7
+            elif self.final_letter_grade == "D+":
+                return 1.3
+            elif self.final_letter_grade == "D":
+                return 1.0
+            elif self.final_letter_grade == "D-":
+                return 0.7
+            else:
+                return 0.0
