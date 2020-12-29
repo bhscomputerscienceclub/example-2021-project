@@ -83,4 +83,4 @@ def functionn():
     return render_template("results.html", len=len(ret) - 1, ret=ret)
 
 
-app.run(use_reloader=True, debug=True, port=5001)
+app.run(use_reloader=True, port=5002)
