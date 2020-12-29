@@ -163,11 +163,11 @@ class Data:
             else:
                 return 0.0
 
-def weightedGPA(ret):
+
+def weighted_GPA(ret):
     total = 0
     classcount = 0
     for i in ret:
         total += i[4]
         classcount += 1
-    return total/classcount
-
+    return total / classcount

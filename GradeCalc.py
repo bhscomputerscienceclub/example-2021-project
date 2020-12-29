@@ -1,7 +1,8 @@
 from flask import Flask, render_template, request, redirect, url_for, make_response
 from InfiniteCampus import IC_grades
-from data import Data
+from data import Data, weighted_GPA 
 import random
+
 
 app = Flask(__name__)
 
@@ -52,7 +53,8 @@ def function():
                 ret[i].append(li[i].q2_bonus_needed())
                 ret[i].append(li[i].q2_assignment_percent_needed(assignment_pts))
                 ret[i].append(li[i].letter_to_gpa())
-
+            semester_GPA = weighted_GPA(ret)
+            ret.append(semester_GPA)
             User_ID = str(random.randint(1, 10000000000000000000000))
             while userdata.get(User_ID, False):
                 User_ID = str(random.randint(1, 10000000000000000000000))
@@ -73,7 +75,7 @@ def functionn():
     except:
         return redirect(url_for("function", Invalid_User=False, Invalid_Number=False))
 
-    return render_template("results.html", len=len(ret), ret=ret)
+    return render_template("results.html", len=len(ret)-1, ret=ret)
 
 
 app.run(use_reloader=True, debug=True, port=5001)
