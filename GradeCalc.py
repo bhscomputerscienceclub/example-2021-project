@@ -1,10 +1,13 @@
 from flask import Flask, render_template, request, redirect, url_for, make_response
+from flask_wtf.csrf import CSRFProtect
 from InfiniteCampus import IC_grades
 from data import Data, weighted_GPA
-import random
+import os
 
 
 app = Flask(__name__)
+app.secret_key = os.urandom(24)
+csrf = CSRFProtect(app)
 
 userdata = {}
 
@@ -60,9 +63,9 @@ def function():
                 ret[i].append(li[i].letter_to_gpa())
             semester_GPA = weighted_GPA(ret)
             ret.append(round(weighted_GPA(ret), 3))
-            User_ID = str(random.randint(1, 10000000000000000000000))
+            User_ID = str(os.urandom(24).hex())
             while userdata.get(User_ID, False):
-                User_ID = str(random.randint(1, 10000000000000000000000))
+                User_ID = str(os.urandom(24).hex())
             userdata[User_ID] = ret
             resp = make_response(redirect("/results"))
             resp.set_cookie("UserID", User_ID)
