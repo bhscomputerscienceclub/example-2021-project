@@ -1,4 +1,5 @@
 from InfiniteCampus import IC_grades
+from a import numbertoletterandgpa
 
 
 class Data:
@@ -6,9 +7,6 @@ class Data:
         self,
         course_num,
         grades,
-        semester_grade_wanted,
-        q1_grade_wanted,
-        q2_grade_wanted,
     ):
 
         if "AP" in grades[0]["courses"][course_num]["gradingTasks"][0]["courseName"]:
@@ -22,10 +20,6 @@ class Data:
             self.gpa_type = "regular"
 
         self.class_type = "no_exam"  # for this semester cuz covid
-
-        self.semester_grade_wanted = semester_grade_wanted
-        self.q1_grade_wanted = q1_grade_wanted
-        self.q2_grade_wanted = q2_grade_wanted
 
         self.course_name = grades[0]["courses"][course_num]["gradingTasks"][0][
             "courseName"
@@ -48,36 +42,33 @@ class Data:
         self.q2_t_pts = grades[1]["courses"][course_num]["gradingTasks"][0][
             "progressTotalPoints"
         ]
-        self.final_letter_grade = grades[1]["courses"][course_num]["gradingTasks"][2][
-            "progressScore"
+        self.final_percent_grade = grades[1]["courses"][course_num]["gradingTasks"][2][
+            "progressPercent"
         ]
+        self.final_letter_grade = numbertoletterandgpa(self.final_percent_grade)
 
-    def exam_percent_needed(self):
+    def exam_percent_needed(self, semester_grade_wanted):
         if self.class_type == "no_exam":
             return "N/A"
         elif self.class_type == "ap":
             return (
-                4 * self.semester_grade_wanted
+                4 * semester_grade_wanted
                 - 1.5 * self.q1_percent
                 - 1.5 * self.q2_percent
             )
         else:
-            return (
-                5 * self.semester_grade_wanted
-                - 2 * self.q1_percent
-                - 2 * self.q2_percent
-            )
+            return 5 * semester_grade_wanted - 2 * self.q1_percent - 2 * self.q2_percent
 
-    def q2_bonus_needed(self):
-        if (self.q2_grade_wanted / 100 * self.q2_t_pts) - self.q2_a_pts > 0:
-            return (self.q2_grade_wanted / 100 * self.q2_t_pts) - self.q2_a_pts
+    def q2_bonus_needed(self, q2_grade_wanted):
+        if (q2_grade_wanted / 100 * self.q2_t_pts) - self.q2_a_pts > 0:
+            return (q2_grade_wanted / 100 * self.q2_t_pts) - self.q2_a_pts
         else:
             return 0
 
-    def q2_assignment_percent_needed(self, assignment_total_pts):
+    def q2_assignment_percent_needed(self, assignment_total_pts, q2_grade_wanted):
         return (
             (
-                self.q2_grade_wanted / 100 * (self.q2_t_pts + assignment_total_pts)
+                q2_grade_wanted / 100 * (self.q2_t_pts + assignment_total_pts)
                 - self.q2_a_pts
             )
             / assignment_total_pts
@@ -164,10 +155,10 @@ class Data:
                 return 0.0
 
 
-def weighted_GPA(ret):
+def weighted_GPA(li):
     total = 0
     classcount = 0
-    for i in ret:
-        total += i[4]
+    for i in li:
+        total += i.letter_to_gpa()
         classcount += 1
     return total / classcount

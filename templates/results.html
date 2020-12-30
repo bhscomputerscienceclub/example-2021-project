@@ -16,8 +16,21 @@
     </h1>
     <h2 style="font-family:helvetica; font-size: 200%;">
         <center>Results:</center>
-        <center>Semester GPA: {{ret[-1]}}</center>
+        <center>Semester GPA: {{gpa}}</center>
     </h2>
+
+    <form action="/results" method="post" class="hform">
+        <input type="hidden" name="csrf_token" value="{{csrf_token()}}"/>
+        <center>
+            <br>
+            <input type="text" name="course_name" value="" placeholder="Couse Name"><br><br>
+            <input type="text" name="q2_grade_wanted" value="" placeholder="Quarter 2 Grade Wanted"><br><br>
+            <input type="text" name="assignment_pts" value="" placeholder="Assignment Points"><br><br>
+            <input type="text" name="semester_grade_wanted" value="" placeholder="Semester Grade Wanted"><br><br>
+            <p><input type="submit" name="submit" value="Calculate" class="button" style="font-size: 200%;"></p>
+        </center>
+    </form>
+
 
     <center>
         <p>
@@ -25,19 +38,15 @@
             {% if Invalid_Number %}
             Invalid Number. Try Again
 
-            {% elif Invalid_User %}
-            Invalid Username/Password Try Again
+            {% elif get_form == false %}
 
             {% else %}
-            {%for i in range(0, len)%}
+            Course Name: {{ret[icourse_name][0]}}<br>
+            Semester Exam Percent Needed: {{ret[icourse_name][2]}}<br>
+            Quarter Bonus Points Needed: {{ret[icourse_name][3]}}<br>
+            Quarter Assignment Percent Needed: {{ret[icourse_name][4]}}<br>
+            Course GPA: {{ret[icourse_name][5]}}<br><br>
 
-            Course Name: {{ret[i][0]}}<br>
-            Semester Exam Percent Needed: {{ret[i][1]}}<br>
-            Quarter Bonus Points Needed: {{ret[i][2]}}<br>
-            Quarter Assignment Percent Needed: {{ret[i][3]}}<br>
-            Course GPA: {{ret[i][4]}}<br><br>
-
-            {%endfor%}
             {% endif %}
         </p>
     </center>
