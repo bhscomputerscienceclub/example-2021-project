@@ -34,7 +34,6 @@ def function():
             
             li = []
             for i in range(len(grades[0]["courses"])):
-                print(grades[1]["courses"][i]["dropped"], grades[0]["courses"][i]["gradingTasks"][0]["courseName"] )
                 if (
                     "PHYSICS"
                     not in grades[0]["courses"][i]["gradingTasks"][0]["courseName"] 
