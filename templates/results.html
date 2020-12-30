@@ -20,10 +20,16 @@
     </h2>
 
     <form action="/results" method="post" class="hform">
-        <input type="hidden" name="csrf_token" value="{{csrf_token()}}"/>
+        <input type="hidden" name="csrf_token" value="{{csrf_token()}}" />
         <center>
-            <br>
-            <input type="text" name="course_name" value="" placeholder="Couse Name"><br><br>
+            {% for i,j in ret.items() %}
+            <input type="radio" id=i name="course" value="{{i}}">
+            <label for=i>{{i}}</label><br>
+            {% endfor %}
+            <input type="radio" id="all" name="course" value="all">
+            <label for="all">All Classes</label><br>
+
+            <br><br>
             <input type="text" name="q2_grade_wanted" value="" placeholder="Quarter 2 Grade Wanted"><br><br>
             <input type="text" name="assignment_pts" value="" placeholder="Assignment Points"><br><br>
             <input type="text" name="semester_grade_wanted" value="" placeholder="Semester Grade Wanted"><br><br>

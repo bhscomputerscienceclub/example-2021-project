@@ -90,7 +90,7 @@ def functionn():
         return redirect(url_for("function", Invalid_User=False, Invalid_Number=False))
     if request.method == "POST":
         try:
-            icourse_name = request.form.get("course_name")
+            icourse_name = request.form.get("course")
             semester_grade_wanted = int(request.form.get("semester_grade_wanted"))
             q2_grade_wanted = int(request.form.get("q2_grade_wanted"))
             assignment_pts = int(request.form.get("assignment_pts"))
