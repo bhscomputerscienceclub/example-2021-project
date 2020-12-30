@@ -46,6 +46,16 @@
 
             {% elif get_form == false %}
 
+            {% elif icourse_name == 'all' %}
+            
+            {% for i,j in ret.items() %}
+            Course Name: {{ret[i][0]}}<br>
+            Semester Exam Percent Needed: {{ret[i][2]}}<br>
+            Quarter Bonus Points Needed: {{ret[i][3]}}<br>
+            Quarter Assignment Percent Needed: {{ret[i][4]}}<br>
+            Course GPA: {{ret[i][5]}}<br><br>
+            {% endfor %}
+
             {% else %}
             Course Name: {{ret[icourse_name][0]}}<br>
             Semester Exam Percent Needed: {{ret[icourse_name][2]}}<br>
