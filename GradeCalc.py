@@ -97,27 +97,16 @@ def functionn():
         except ValueError:
             Invalid_Number = True
         else:
-            if icourse_name == 'all':
-                for i,j in ret.items():
-                    try:
-                        ret[i].append(round(ret[i][1].exam_percent_needed(semester_grade_wanted), 3))
-                    except:
-                        ret[i].append(ret[i][1].exam_percent_needed(semester_grade_wanted))
-                    ret[i].append(round(ret[i][1].q2_bonus_needed(q2_grade_wanted), 3))
-                    ret[i].append(
-                        round(ret[i][1].q2_assignment_percent_needed(assignment_pts,q2_grade_wanted), 3)
-                    )
-                    ret[i].append(ret[i][1].letter_to_gpa())
-            else:
+            for i,j in ret.items():
                 try:
-                    ret[icourse_name].append(round(ret[icourse_name][1].exam_percent_needed(semester_grade_wanted), 3))
+                    ret[i].append(round(ret[i][1].exam_percent_needed(semester_grade_wanted), 3))
                 except:
-                    ret[icourse_name].append(ret[icourse_name][1].exam_percent_needed(semester_grade_wanted))
-                ret[icourse_name].append(round(ret[icourse_name][1].q2_bonus_needed(q2_grade_wanted), 3))
-                ret[icourse_name].append(
-                    round(ret[icourse_name][1].q2_assignment_percent_needed(assignment_pts,q2_grade_wanted), 3)
+                    ret[i].append(ret[i][1].exam_percent_needed(semester_grade_wanted))
+                ret[i].append(round(ret[i][1].q2_bonus_needed(q2_grade_wanted), 3))
+                ret[i].append(
+                    round(ret[i][1].q2_assignment_percent_needed(assignment_pts,q2_grade_wanted), 3)
                 )
-                ret[icourse_name].append(ret[icourse_name][1].letter_to_gpa())
+                ret[i].append(ret[i][1].letter_to_gpa())
         get_form = True
     
 
