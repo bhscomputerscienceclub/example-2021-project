@@ -77,6 +77,7 @@ def functionn():
     Invalid_Number = False
     get_form = False
     icourse_name = ''
+    first = True
     try:
         User_ID = request.cookies.get("UserID")
         li = userdata[User_ID]
@@ -97,16 +98,18 @@ def functionn():
         except ValueError:
             Invalid_Number = True
         else:
-            for i,j in ret.items():
-                try:
-                    ret[i].append(round(ret[i][1].exam_percent_needed(semester_grade_wanted), 3))
-                except:
-                    ret[i].append(ret[i][1].exam_percent_needed(semester_grade_wanted))
-                ret[i].append(round(ret[i][1].q2_bonus_needed(q2_grade_wanted), 3))
-                ret[i].append(
-                    round(ret[i][1].q2_assignment_percent_needed(assignment_pts,q2_grade_wanted), 3)
-                )
-                ret[i].append(ret[i][1].letter_to_gpa())
+            if first:
+                for i,j in ret.items():
+                    try:
+                        ret[i].append(round(ret[i][1].exam_percent_needed(semester_grade_wanted), 3))
+                    except:
+                        ret[i].append(ret[i][1].exam_percent_needed(semester_grade_wanted))
+                    ret[i].append(round(ret[i][1].q2_bonus_needed(q2_grade_wanted), 3))
+                    ret[i].append(
+                        round(ret[i][1].q2_assignment_percent_needed(assignment_pts,q2_grade_wanted), 3)
+                    )
+                    ret[i].append(ret[i][1].letter_to_gpa())
+                first = False
         get_form = True
     
 
