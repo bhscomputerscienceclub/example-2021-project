@@ -91,9 +91,9 @@ def functionn():
     if request.method == "POST":
         try:
             icourse_name = request.form.get("course")
-            semester_grade_wanted = int(request.form.get("semester_grade_wanted"))
-            q2_grade_wanted = int(request.form.get("q2_grade_wanted"))
-            assignment_pts = int(request.form.get("assignment_pts"))
+            semester_grade_wanted = float(request.form.get("semester_grade_wanted"))
+            q2_grade_wanted = float(request.form.get("q2_grade_wanted"))
+            assignment_pts = float(request.form.get("assignment_pts"))
         except ValueError:
             Invalid_Number = True
         else:
