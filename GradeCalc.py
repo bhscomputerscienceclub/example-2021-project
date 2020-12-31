@@ -75,6 +75,7 @@ def function():
 def functionn():
     ret = {}
     Invalid_Number = False
+    no_select = False
     get_form = False
     icourse_name = ''
     try:
@@ -94,8 +95,16 @@ def functionn():
             semester_grade_wanted = float(request.form.get("semester_grade_wanted"))
             q2_grade_wanted = float(request.form.get("q2_grade_wanted"))
             assignment_pts = float(request.form.get("assignment_pts"))
+            if icourse_name == None:
+                raise Exception()
+
+
         except ValueError:
             Invalid_Number = True
+
+        except :
+            no_select = True
+        
         else:
             for i,j in ret.items():
                 try:
@@ -110,6 +119,6 @@ def functionn():
         get_form = True
     
 
-    return render_template("results.html", len=len(ret) - 1, ret=ret, Invalid_Number=Invalid_Number, get_form = get_form, gpa = gpa, icourse_name=icourse_name)
+    return render_template("results.html", len=len(ret) - 1, ret=ret, Invalid_Number=Invalid_Number, no_select = no_select, get_form = get_form, gpa = gpa, icourse_name=icourse_name)
 
 app.run(debug = True,use_reloader=True, port=5002)
