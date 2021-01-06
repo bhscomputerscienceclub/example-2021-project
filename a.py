@@ -1,4 +1,4 @@
-def numbertoletterandgpa(numbergrade):
+def numbertoletter(numbergrade):
     if numbergrade >= 93.5:
         return ("A")
     elif numbergrade >= 89.5:
