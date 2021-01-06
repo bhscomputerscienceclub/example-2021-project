@@ -1,6 +1,6 @@
 from InfiniteCampus import IC_grades
-from a import numbertoletterandgpa
-
+from a import numbertoletter
+from phsyics import physicsgradepercent
 
 class Data:
     def __init__(
@@ -154,11 +154,19 @@ class Data:
             else:
                 return 0.0
 
+def totalphysicspercents(numberofphysicsclasses)
+    physicslist = []
+    while numberofphysicsclasses > 0:
+        physicslist.append(physicsgradepercent)
+    return physicslist
 
 def weighted_GPA(li):
     total = 0
     classcount = 0
     for i in li:
         total += i.letter_to_gpa()
+        classcount += 1
+    for i in physicslist:
+        total += letter_to_gpa(numbertoletter(i))
         classcount += 1
     return total / classcount
