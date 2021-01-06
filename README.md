@@ -1,1 +1,1 @@
-# example-project
+# grade-calculator

@@ -1,0 +1,9 @@
+[Unit]
+Description=gradecalc
+After=network.target
+
+[Service]
+ExecStart=/home/kaiz/startgradecalc.sh
+
+[Install]
+WantedBy=multi-user.target
