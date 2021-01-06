@@ -1,6 +1,6 @@
 from InfiniteCampus import IC_grades
 from a import numbertoletter
-from phsyics import physicsgradepercent
+from physics import physicsgradepercent
 
 class Data:
     def __init__(
@@ -45,7 +45,7 @@ class Data:
         self.final_percent_grade = grades[1]["courses"][course_num]["gradingTasks"][2][
             "progressPercent"
         ]
-        self.final_letter_grade = numbertoletterandgpa(self.final_percent_grade)
+        self.final_letter_grade = numbertoletter(self.final_percent_grade)
 
     def exam_percent_needed(self, semester_grade_wanted):
         if self.class_type == "no_exam":
@@ -154,7 +154,7 @@ class Data:
             else:
                 return 0.0
 
-def totalphysicspercents(numberofphysicsclasses)
+def totalphysicspercents(numberofphysicsclasses):
     physicslist = []
     while numberofphysicsclasses > 0:
         physicslist.append(physicsgradepercent)
@@ -162,30 +162,30 @@ def totalphysicspercents(numberofphysicsclasses)
 
 def numbertogpa(percent):
     lettergrade = numbertoletter(percent)
-            if lettergrade == "A":
-                return 5.0
-            elif lettergrade == "A-":
-                return 4.7
-            elif lettergrade == "B+":
-                return 4.3
-            elif lettergrade == "B":
-                return 4.0
-            elif lettergrade == "B-":
-                return 3.7
-            elif lettergrade == "C+":
-                return 3.3
-            elif lettergrade == "C":
-                return 3.0
-            elif lettergrade == "C-":
-                return 1.7
-            elif lettergrade == "D+":
-                return 1.3
-            elif lettergrade == "D":
-                return 1.0
-            elif lettergrade == "D-":
-                return 0.7
-            else:
-                return 0.0
+    if lettergrade == "A":
+        return 5.0
+    elif lettergrade == "A-":
+        return 4.7
+    elif lettergrade == "B+":
+        return 4.3
+    elif lettergrade == "B":
+        return 4.0
+    elif lettergrade == "B-":
+        return 3.7
+    elif lettergrade == "C+":
+        return 3.3
+    elif lettergrade == "C":
+        return 3.0
+    elif lettergrade == "C-":
+        return 1.7
+    elif lettergrade == "D+":
+        return 1.3
+    elif lettergrade == "D":
+        return 1.0
+    elif lettergrade == "D-":
+        return 0.7
+    else:
+        return 0.0
 
 def weighted_GPA(li):
     total = 0
@@ -193,7 +193,7 @@ def weighted_GPA(li):
     for i in li:
         total += i.letter_to_gpa()
         classcount += 1
-    for i in totalphysicspercents:
-        total += numbertogpa(i)
-        classcount += 1
+    # for i in totalphysicspercents:
+    #     total += numbertogpa(i)
+    #     classcount += 1
     return total / classcount

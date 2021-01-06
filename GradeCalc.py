@@ -121,4 +121,23 @@ def functionn():
 
     return render_template("results.html", len=len(ret) - 1, ret=ret, Invalid_Number=Invalid_Number, no_select = no_select, get_form = get_form, gpa = gpa, icourse_name=icourse_name)
 
+
+@app.route("/physics", methods=["GET", "POST"])
+def functionnn():
+    if request.method == "POST":
+        number_of_M = request.form.get("number_of_M")
+        number_of_P = request.form.get("number_of_P")
+        number_of_A = request.form.get("number_of_A")
+        number_of_B = request.form.get("number_of_B")
+        number_of_0 = request.form.get("number_of_0")
+        course = request.form.get("course")
+
+        print(number_of_0)
+        print(number_of_M)
+        print(number_of_P)
+        print(number_of_A)
+
+
+    return render_template("physics.html", )
+
 app.run(debug = True,use_reloader=True, port=5002)

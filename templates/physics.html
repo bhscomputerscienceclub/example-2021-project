@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <title>Page Title</title>
+    <link rel="stylesheet" href="{{ url_for('static',filename='styles/formforindex.css') }}">
+
+
+</head>
+
+<body style="background-color:powderblue;">
+
+    <h1 style="font-family:helvetica; font-size: 300%;">
+        <center>Grade Calculator</center>
+
+    </h1>
+
+    <form action="/physics" method="post" class="hform">
+        <input type="hidden" name="csrf_token" value="{{csrf_token()}}" />
+        <center>
+            
+            <br><br>
+            <input type="text" name="number_of_M" value="" placeholder="Number of M"><br><br>
+            <input type="text" name="number_of_P" value="" placeholder="Number of P"><br><br>
+            <input type="text" name="number_of_A" value="" placeholder="Number of A"><br><br>
+            <input type="text" name="number_of_B" value="" placeholder="Number of B"><br><br>
+            <input type="text" name="number_of_0" value="" placeholder="Number of 0"><br><br>
+            <input type="text" name="course" value="" placeholder="Course:"><br><br>
+            <p><input type="submit" name="submit" value="Calculate" class="button" style="font-size: 200%;"></p>
+        </center>
+    </form>
+
+
+
+
+
+</body>
+
+</html>
