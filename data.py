@@ -193,7 +193,4 @@ def weighted_GPA(li):
     for i in li:
         total += i.letter_to_gpa()
         classcount += 1
-    for i in totalphysicspercents:
-        total += numbertogpa(i)
-        classcount += 1
     return total / classcount
