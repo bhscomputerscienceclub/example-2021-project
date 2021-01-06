@@ -160,6 +160,33 @@ def totalphysicspercents(numberofphysicsclasses)
         physicslist.append(physicsgradepercent)
     return physicslist
 
+def numbertogpa(percent):
+    lettergrade = numbertoletter(percent)
+            if lettergrade == "A":
+                return 5.0
+            elif lettergrade == "A-":
+                return 4.7
+            elif lettergrade == "B+":
+                return 4.3
+            elif lettergrade == "B":
+                return 4.0
+            elif lettergrade == "B-":
+                return 3.7
+            elif lettergrade == "C+":
+                return 3.3
+            elif lettergrade == "C":
+                return 3.0
+            elif lettergrade == "C-":
+                return 1.7
+            elif lettergrade == "D+":
+                return 1.3
+            elif lettergrade == "D":
+                return 1.0
+            elif lettergrade == "D-":
+                return 0.7
+            else:
+                return 0.0
+
 def weighted_GPA(li):
     total = 0
     classcount = 0
@@ -167,6 +194,6 @@ def weighted_GPA(li):
         total += i.letter_to_gpa()
         classcount += 1
     for i in totalphysicspercents:
-        total += letter_to_gpa(numbertoletter(i))
+        total += numbertogpa(i)
         classcount += 1
     return total / classcount
