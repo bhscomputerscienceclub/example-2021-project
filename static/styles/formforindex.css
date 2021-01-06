@@ -31,3 +31,17 @@ input[type="submit"] {
     color: white;
     box-shadow: 0 0.75rem 0.5rem -0.5rem #5ac5f7;
 }
+.hform{
+    margin: auto;
+    text-align:center;
+    align-items: center;
+}
+.classesofstuffs{
+    display: block;
+    font-family: Helvetica, Arial, sans-serif;
+    text-align: left;
+}
+#submitbutton {
+    margin: auto;
+    text-align:center;
+}
