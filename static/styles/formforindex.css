@@ -5,13 +5,11 @@ body {
 }
 
 form {
-    display: flex;
     flex-wrap: wrap;
     margin: auto;
 }
 
 form>input {
-    flex: 1 1 10ch;
     margin: 0.5rem;
 }
 
