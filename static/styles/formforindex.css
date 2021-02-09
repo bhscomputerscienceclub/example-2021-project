@@ -39,6 +39,14 @@ input[type="submit"] {
     font-family: Helvetica, Arial, sans-serif;
     text-align: left;
 }
+p{
+    font-family: Helvetica, Arial, sans-serif;
+}
+table{
+    font-family:helvetica;
+    border:2px solid;
+}
+
 #submitbutton {
     margin: auto;
     text-align:center;
