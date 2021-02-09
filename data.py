@@ -1,5 +1,5 @@
 from InfiniteCampus import IC_grades
-from a import numbertoletter
+from number_letter import numbertoletter
 from physics import physicsgradepercent
 
 class Data:
@@ -9,6 +9,7 @@ class Data:
         grades,
     ):
 
+        #gets data from grades list
         if "AP" in grades[0]["courses"][course_num]["gradingTasks"][0]["courseName"]:
             self.gpa_type = "ap"
         elif (
